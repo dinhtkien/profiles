@@ -1,0 +1,53 @@
+/* initial styles */
+#main .container-fluid {
+    padding-top: 15px;
+}
+#main .col-3 .card {
+    padding: 10% 0%;
+    margin-left: 5px;
+}
+#main .col-9 .card,#main .col-12 .card  {
+    border: 0px;
+    height: 100vh;
+    margin-left: 5%;
+}
+#main .card hr {
+    width:50%;
+    margin-left:25%;
+}
+#main button {
+    width:70px;
+}
+/* mouse-over dark light mode  */
+#main .card.light.mouse-on {
+    background:rgb(225, 216, 216);
+}
+#main .card.dark.mouse-on {
+    background:rgb(64, 63, 63);
+}
+/* card light dark mode  */
+#main .card.light span, #main .card.light h3, 
+#main .card.light h6, #main .card.light ul,
+#main .card.light hr{
+    color: #000;
+}
+#main .card.dark span, #main .card.dark h3, 
+#main .card.dark h6, #main .card.dark ul,
+#main .card.dark hr {
+    color: rgb(225, 225, 225);
+}
+#main .card.dark, #main .col-9.dark, #main .col-3.dark, #main .dark, #main .col-12.dark {
+    background-color: #343434;
+    background-image: linear-gradient(to right,#343434, #585858 );
+    border-color: rgb(162, 159, 159);
+}
+#main .card.light, #main .col-9.light, #main .col-3.light, #main .light, #main .col-12.light{
+    background-color: rgb(242, 242, 242);
+    background-image: linear-gradient(to right,#ffffff, #cdf7fc );
+}
+#main a {
+    text-decoration-line: none;
+}
+#main .row .row {
+    padding-right: 0px;
+}
