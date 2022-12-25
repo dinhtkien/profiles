@@ -32,45 +32,51 @@ export default function Main(props: MainProps) {
         return () => window.removeEventListener('resize', updateSize);
     }, []);
     console.log(size);
+    function getMenuItemCard(typeName: "Education" | "Personal Info" | "Hobbies") {
+        let selectedCardLocal: any = {};
+        if (typeName === "Education") {
+            selectedCardLocal = { education: true, personalInfo: false, hobbies: false };
+        }
+        else if (typeName === "Personal Info") {
+            selectedCardLocal = { education: false, personalInfo: true, hobbies: false };
+        }
+        else if (typeName === "Hobbies") {
+            selectedCardLocal = { education: false, personalInfo: false, hobbies: true };
+        }
+        let isMouseOverLocal: any = selectedCardLocal;
+        let mouseState: string = " mouse-off";
+        if (isMouseOver.education === true && typeName === "Education") mouseState = " mouse-on"
+        else if (isMouseOver.personalInfo === true && typeName === "Personal Info") mouseState = " mouse-on"
+        else if (isMouseOver.hobbies === true && typeName === "Hobbies") mouseState = " mouse-on"
+        return (
+            <div className={(size.currentW > 500) ? "row " : "col-4 "}>
+                <div className={"menu-item card "
+                    + props.mode
+                    + mouseState}
+                    onMouseEnter={event => setIsMouseOver(isMouseOverLocal)}
+                    onMouseLeave={event => setIsMouseOver({
+                        education: false,
+                        personalInfo: false,
+                        hobbies: false,
+                    })}
+                    onMouseDown={event => setSelectedCard(selectedCardLocal)}
+                >
+                    <span className="text-center">{typeName}</span>
+                </div>
+            </div>
+        )
+    }
+    let educationCard:JSX.Element = getMenuItemCard("Education");
+    let personalInfo:JSX.Element = getMenuItemCard("Personal Info");
+    let hobbies:JSX.Element = getMenuItemCard("Hobbies");
     return (
         <section id="main">
             <div className={"container-fluid " + props.mode}>
                 <div className="row">
                     <div className={(size.currentW > 500) ? "col-3 " : "row " + props.mode}>
-                        <div className={(size.currentW > 500) ? "row " : "col-4 "}>
-                            <div className={"menu-item card "
-                                + props.mode
-                                + (isMouseOver.education ? " mouse-on" : " mouse-off")}
-                                onMouseEnter={event => setIsMouseOver(prevState => { return { ...prevState, education: true } })}
-                                onMouseLeave={event => setIsMouseOver(prevState => { return { ...prevState, education: false } })}
-                                onMouseDown={event => setSelectedCard(
-                                    preSelectedCard => { return { education: true, personalInfo: false, hobbies: false } })}
-                            >
-                                <span className="text-center">Education</span>
-                            </div>
-                        </div>
-                        <div className={(size.currentW > 500) ? "row " : "col-4 "}>
-                            <div className={"menu-item card d-flex justify-content-center " + props.mode
-                                + (isMouseOver.personalInfo ? " mouse-on" : " mouse-off")}
-                                onMouseEnter={event => setIsMouseOver(prevState => { return { ...prevState, personalInfo: true } })}
-                                onMouseLeave={event => setIsMouseOver(prevState => { return { ...prevState, personalInfo: false } })}
-                                onMouseDown={event => setSelectedCard(
-                                    preSelectedCard => { return { education: false, personalInfo: true, hobbies: false } })}
-                            >
-                                <span className="text-center">Personal Info</span>
-                            </div>
-                        </div>
-                        <div className={(size.currentW > 500) ? "row " : "col-4"}>
-                            <div className={"menu-item card d-flex justify-content-center " + props.mode
-                                + (isMouseOver.hobbies ? " mouse-on" : " mouse-off")}
-                                onMouseEnter={event => setIsMouseOver(prevState => { return { ...prevState, hobbies: true } })}
-                                onMouseLeave={event => setIsMouseOver(prevState => { return { ...prevState, hobbies: false } })}
-                                onMouseDown={event => setSelectedCard(
-                                    preSelectedCard => { return { education: false, personalInfo: false, hobbies: true } })}
-                            >
-                                <span className="text-center">Hobbies</span>
-                            </div>
-                        </div>
+                        {educationCard}
+                        {personalInfo}
+                        {hobbies}
                     </div>
                     <div className={size.currentW > 500 ? "col-9 " : "col-12 " + props.mode}>
                         <div className="row">
@@ -87,7 +93,12 @@ export default function Main(props: MainProps) {
                                         <hr className=""></hr>
                                         <h3>Secondary And High School</h3>
                                         <button type="button" className="btn btn-sm btn-info d-inline-block"
-                                            onMouseDown={event => setIsShown(prevIsShownState => { return prevIsShownState.show1 ? { show1: false } : { show1: true } })}>Show</button>
+                                            onMouseDown={event => setIsShown(prevIsShownState => {
+                                                return prevIsShownState.show1 ?
+                                                    { show1: false } : { show1: true }
+                                            })}
+                                        >Show
+                                        </button>
                                         {isShown.show1 &&
                                             <>
                                                 <h6>Le Quy Don Secondary School</h6>
