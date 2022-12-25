@@ -6,24 +6,29 @@
     padding: 10% 0%;
     margin-left: 5px;
 }
-#main .col-9 .card,#main .col-12 .card  {
+#main .col-9 .card  {
     border: 0px;
     height: 100vh;
     margin-left: 5%;
 }
+#main .col-12 .card {
+    border: 0px;
+    height: 100vh;
+    margin-left: 0%;
+}
 #main .card hr {
     width:50%;
-    margin-left:25%;
+    margin: 0% auto;
 }
 #main button {
     width:70px;
 }
 /* mouse-over dark light mode  */
 #main .card.light.mouse-on {
-    background:rgb(225, 216, 216);
+    background:rgb(186, 200, 203);
 }
 #main .card.dark.mouse-on {
-    background:rgb(64, 63, 63);
+    background:rgb(89, 83, 83);
 }
 /* card light dark mode  */
 #main .card.light span, #main .card.light h3, 

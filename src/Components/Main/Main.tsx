@@ -66,6 +66,57 @@ export default function Main(props: MainProps) {
             </div>
         )
     }
+    function getEducationContents() {
+        return (
+            <>
+                <h3>July 2017 to December 2022</h3>
+                <h6>University Of Technology</h6>
+                <ul>
+                    <li>Type: Formal Education</li>
+                    <li>Major: Electronic-Telecommunication</li>
+                    <li>Specialization: Embedded Programming</li>
+                </ul>
+                <hr className=""></hr>
+                <h3>Secondary And High School</h3>
+                <button type="button" className="btn btn-sm btn-info d-inline-block"
+                    onMouseDown={event => setIsShown(prevIsShownState => {
+                        return prevIsShownState.show1 ?
+                            { show1: false } : { show1: true }
+                    })}
+                >Show
+                </button>
+                {isShown.show1 &&
+                    <>
+                        <h6>Le Quy Don Secondary School</h6>
+                        <ul>Location: Lam Dong Province</ul>
+                        <h6>Le Quy Don High School</h6>
+                        <ul>Location: Lam Dong Province</ul>
+                    </>
+                }
+            </>
+        )
+    }
+    function getPersonalInfor() {
+        return (
+            <ul>
+                <li>Date Of Birth: August 8th, 1999</li>
+                <li>Place Of Birth: Lam Dong Province</li>
+                <hr></hr>
+                <li>Current Address: Binh Tan District, Ho Chi Minh City</li>
+                <li>Phone Number: +84 869996250</li>
+                <hr></hr>
+                <li>Email: dinhtkien@gmail.com</li>
+                <li><a href="https://www.facebook.com/dinhtkien1999">Facebook</a></li>
+            </ul>
+        );
+    }
+    function getHobbies() {
+        return (<ul>
+            <li>Learning New Things</li>
+            <li>Reading Books</li>
+            <li>Touring On Motorcycles</li>
+        </ul>)
+    }
     let educationCard:JSX.Element = getMenuItemCard("Education");
     let personalInfo:JSX.Element = getMenuItemCard("Personal Info");
     let hobbies:JSX.Element = getMenuItemCard("Hobbies");
@@ -81,54 +132,9 @@ export default function Main(props: MainProps) {
                     <div className={size.currentW > 500 ? "col-9 " : "col-12 " + props.mode}>
                         <div className="row">
                             <div className={"card " + props.mode}>
-                                {selectedCard.education &&
-                                    <>
-                                        <h3>July 2017 to December 2022</h3>
-                                        <h6>University Of Technology</h6>
-                                        <ul>
-                                            <li>Type: Formal Education</li>
-                                            <li>Major: Electronic-Telecommunication</li>
-                                            <li>Specialization: Embedded Programming</li>
-                                        </ul>
-                                        <hr className=""></hr>
-                                        <h3>Secondary And High School</h3>
-                                        <button type="button" className="btn btn-sm btn-info d-inline-block"
-                                            onMouseDown={event => setIsShown(prevIsShownState => {
-                                                return prevIsShownState.show1 ?
-                                                    { show1: false } : { show1: true }
-                                            })}
-                                        >Show
-                                        </button>
-                                        {isShown.show1 &&
-                                            <>
-                                                <h6>Le Quy Don Secondary School</h6>
-                                                <ul>Location: Lam Dong Province</ul>
-                                                <h6>Le Quy Don High School</h6>
-                                                <ul>Location: Lam Dong Province</ul>
-                                            </>
-                                        }
-                                    </>
-                                }
-
-                                {selectedCard.personalInfo &&
-                                    <ul>
-                                        <li>Date Of Birth: August 8th, 1999</li>
-                                        <li>Place Of Birth: Lam Dong Province</li>
-                                        <hr></hr>
-                                        <li>Current Address: Binh Tan District, Ho Chi Minh City</li>
-                                        <li>Phone Number: +84 869996250</li>
-                                        <hr></hr>
-                                        <li>Email: dinhtkien@gmail.com</li>
-                                        <li><a href="https://www.facebook.com/dinhtkien1999">Facebook</a></li>
-                                    </ul>
-                                }
-                                {selectedCard.hobbies &&
-                                    <ul>
-                                        <li>Learning New Things</li>
-                                        <li>Reading Books</li>
-                                        <li>Touring On Motorcycles</li>
-                                    </ul>
-                                }
+                                {selectedCard.education && getEducationContents()}
+                                {selectedCard.personalInfo && getPersonalInfor()}
+                                {selectedCard.hobbies && getHobbies()}
                             </div>
                         </div>
                     </div>
