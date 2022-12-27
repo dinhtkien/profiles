@@ -2,13 +2,11 @@
     height:5vh;
 }
 #top-bar .container-fluid {
-    padding: 3%;
+    padding: 5% 25% 0% 25%;   
 }
 #top-bar .container-fluid.light{
-    background-color: #7430f9;
-    background-image: linear-gradient(to right,#7430f9, #8a50ff, #1900ff );
+    background: linear-gradient(to right,#fff,#abeef4 );
 }
 #top-bar .container-fluid.dark {
-    background-color: #1c1c1c;
-    background-image: linear-gradient(to right,#1c1c1c, #272424, #4f4646 );
+    background: linear-gradient(to right,#1c1c1c, #1c1c1c,#4f4646 );
 }

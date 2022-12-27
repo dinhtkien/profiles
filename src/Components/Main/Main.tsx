@@ -5,11 +5,6 @@ interface MainProps {
     mode: string;
 }
 export default function Main(props: MainProps) {
-    const [isMouseOver, setIsMouseOver] = React.useState({
-        education: false,
-        personalInfo: false,
-        hobbies: false,
-    });
     const [selectedCard, setSelectedCard] = React.useState({
         education: true,
         personalInfo: false,
@@ -31,7 +26,6 @@ export default function Main(props: MainProps) {
         updateSize();
         return () => window.removeEventListener('resize', updateSize);
     }, []);
-    console.log(size);
     function getMenuItemCard(typeName: "Education" | "Personal Info" | "Hobbies") {
         let selectedCardLocal: any = {};
         if (typeName === "Education") {
@@ -43,22 +37,9 @@ export default function Main(props: MainProps) {
         else if (typeName === "Hobbies") {
             selectedCardLocal = { education: false, personalInfo: false, hobbies: true };
         }
-        let isMouseOverLocal: any = selectedCardLocal;
-        let mouseState: string = " mouse-off";
-        if (isMouseOver.education === true && typeName === "Education") mouseState = " mouse-on"
-        else if (isMouseOver.personalInfo === true && typeName === "Personal Info") mouseState = " mouse-on"
-        else if (isMouseOver.hobbies === true && typeName === "Hobbies") mouseState = " mouse-on"
         return (
             <div className={(size.currentW > 500) ? "row " : "col-4 "}>
-                <div className={"menu-item card "
-                    + props.mode
-                    + mouseState}
-                    onMouseEnter={event => setIsMouseOver(isMouseOverLocal)}
-                    onMouseLeave={event => setIsMouseOver({
-                        education: false,
-                        personalInfo: false,
-                        hobbies: false,
-                    })}
+                <div className={"menu-item card "+ props.mode}
                     onMouseDown={event => setSelectedCard(selectedCardLocal)}
                 >
                     <span className="text-center">{typeName}</span>
@@ -78,7 +59,7 @@ export default function Main(props: MainProps) {
                 </ul>
                 <hr className=""></hr>
                 <h3>Secondary And High School</h3>
-                <button type="button" className="btn btn-sm btn-info d-inline-block"
+                <button type="button" className="btn btn-md btn-secondary text-light fw-bold"
                     onMouseDown={event => setIsShown(prevIsShownState => {
                         return prevIsShownState.show1 ?
                             { show1: false } : { show1: true }
@@ -131,7 +112,7 @@ export default function Main(props: MainProps) {
                     </div>
                     <div className={size.currentW > 500 ? "col-9 " : "col-12 " + props.mode}>
                         <div className="row">
-                            <div className={"card " + props.mode}>
+                            <div className={"card main-card " + props.mode}>
                                 {selectedCard.education && getEducationContents()}
                                 {selectedCard.personalInfo && getPersonalInfor()}
                                 {selectedCard.hobbies && getHobbies()}

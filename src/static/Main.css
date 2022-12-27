@@ -1,15 +1,16 @@
 /* initial styles */
 #main .container-fluid {
-    padding-top: 15px;
+    padding: 1% 15%; 
+}
+#main .container-fluid.dark {
+    background: #4f4646;
 }
 #main .col-3 .card {
     padding: 10% 0%;
-    margin-left: 5px;
 }
 #main .col-9 .card  {
     border: 0px;
     height: 100vh;
-    margin-left: 5%;
 }
 #main .col-12 .card {
     border: 0px;
@@ -24,11 +25,11 @@
     width:70px;
 }
 /* mouse-over dark light mode  */
-#main .card.light.mouse-on {
-    background:rgb(186, 200, 203);
+#main .card.light:hover {
+    background-color: #abeef4;
 }
-#main .card.dark.mouse-on {
-    background:rgb(89, 83, 83);
+#main .card.dark:hover {
+    background: linear-gradient(90deg, #6a6060, transparent) #3f3f3f;
 }
 /* card light dark mode  */
 #main .card.light span, #main .card.light h3, 
@@ -41,14 +42,18 @@
 #main .card.dark hr {
     color: rgb(225, 225, 225);
 }
-#main .card.dark, #main .col-9.dark, #main .col-3.dark, #main .dark, #main .col-12.dark {
-    background-color: #343434;
-    background-image: linear-gradient(to right,#343434, #585858 );
+#main .card.dark, #main .col-9.dark, #main .col-3.dark, #main .col-12.dark {
     border-color: rgb(162, 159, 159);
+    background: #4f4646;
+    transition: background-color 0.5s;
 }
-#main .card.light, #main .col-9.light, #main .col-3.light, #main .light, #main .col-12.light{
-    background-color: rgb(242, 242, 242);
-    background-image: linear-gradient(to right,#ffffff, #cdf7fc );
+#main .card.light, #main .col-9.light, #main .col-3.light, #main .col-12.light{
+    background: linear-gradient(90deg, #ffffff, transparent) #ffffff;
+    border-color: rgb(162, 159, 159);
+    transition: background-color 0.5s;
+}
+#main .main-card.dark {
+    margin-left: 5px;
 }
 #main a {
     text-decoration-line: none;
