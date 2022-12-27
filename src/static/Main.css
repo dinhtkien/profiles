@@ -52,9 +52,6 @@
     border-color: rgb(162, 159, 159);
     transition: background-color 0.5s;
 }
-#main .main-card.dark {
-    margin-left: 5px;
-}
 #main a {
     text-decoration-line: none;
 }
