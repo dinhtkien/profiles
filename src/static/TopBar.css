@@ -2,7 +2,7 @@
     height:5vh;
 }
 #top-bar .container-fluid {
-    padding: 5% 15% 0% 15%;   
+    padding: 2% 15% 2% 15%;   
 }
 #top-bar .container-fluid.light{
     background: linear-gradient(to right,#fff,#abeef4 );

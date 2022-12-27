@@ -11,7 +11,7 @@ export default function TopBar(props: TopBarProps) {
             <div className={"container-fluid " + props.mode}>
                 <div className="row">
                     <div className="col-4 d-flex justify-content-center align-items-center">
-                        <img src={props.mode==="light"?"/images/k-logo.png":"/images/k-logo1.png"} alt="logo"></img>
+                        <img src={props.mode==="light"?"/images/k-logo.jpg":"/images/k-logo1.jpg"} alt="logo"></img>
                     </div>
                     <div className="col-4 d-flex justify-content-center align-items-center">
                         <h3 className={"d-inline-block "+ (props.mode === "light"?"text-dark":"text-light")}>Kien's Profile</h3>
